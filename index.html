@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Madelyn Torff - UI/UX Designer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&family=Nunito&family=Playfair+Display:wght@700&family=Raleway:wght@500&display=swap" rel="stylesheet">
+    <style>
+        /* 基础样式 */
+        body {
+            margin: 0;
+            font-family: 'Nunito', sans-serif;
+            background-color: #F9FAFF;
+            color: #25282B;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* 头部样式 */
+        header {
+            background-color: #F9FAFF;
+            padding: 2rem 0;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 3rem;
+        }
+
+        .nav-title {
+            font-family: 'Comfortaa', cursive;
+            font-size: 1.5rem;
+            color: #25282B;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 3rem;
+        }
+
+        .nav-link {
+            font-family: 'Raleway', sans-serif;
+            font-size: 1rem;
+            color: #25282B;
+            text-decoration: none;
+            position: relative;
+        }
+
+        .nav-link:hover::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: #25282B;
+        }
+
+        /* 英雄区样式 */
+        .hero {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            padding: 5rem 0;
+            gap: 2rem;
+        }
+
+        .hero-title-container {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .avatar {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            border: 2px solid #e0e0e0;
+            transition: transform 0.3s ease;
+            transform: translate(200px, 150px) scale(3);
+        }
+
+        .avatar:hover {
+            transform: translate(200px, 150px) scale(3.1);
+        }
+
+        .subtitle {
+            font-family: 'Nunito', sans-serif;
+            font-size: 1.25rem;
+            color: #828282;
+            text-transform: uppercase;
+        }
+
+        .title {
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            line-height: 1.2;
+        }
+
+        .description {
+            font-size: 1.5rem;
+            line-height: 1.5;
+            max-width: 600px;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .btn-primary {
+            background-color: #FDC435;
+            color: #25282B;
+            padding: 0.75rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.3s;
+        }
+
+        .btn-primary:hover {
+            background-color: #e8b532;
+        }
+
+        .btn-secondary {
+            border: 2px solid #25282B;
+            color: #25282B;
+            padding: 0.75rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .btn-secondary:hover {
+            background-color: #25282B;
+            color: #F9FAFF;
+        }
+
+        /* 项目区样式 */
+        .projects {
+            background-color: #FFFFFF;
+            padding: 5rem 0;
+            margin-top: 4rem;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background-color: #F9FAFF;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 6px 64px rgba(112, 144, 176, 0.1);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-image {
+            height: 200px;
+            background-color: #E0E0E0;
+            position: relative;
+        }
+
+        .project-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .project-info {
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .project-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: #25282B;
+        }
+
+        .project-description {
+            font-size: 1rem;
+            color: #828282;
+            flex-grow: 1;
+        }
+
+        .project-link {
+            align-self: flex-start;
+            border: 1px solid #25282B;
+            color: #25282B;
+            padding: 0.5rem 1.5rem;
+            border-radius: 24px;
+            text-decoration: none;
+            font-size: 0.875rem;
+            font-weight: 500;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .project-link:hover {
+            background-color: #25282B;
+            color: #F9FAFF;
+        }
+
+        /* 页脚样式 */
+        footer {
+            background-color: #F9FAFF;
+            padding: 3rem 0;
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .social-icon {
+            width: 24px;
+            height: 24px;
+            fill: #25282B;
+            transition: fill 0.3s;
+        }
+
+        .social-icon:hover {
+            fill: #FDC435;
+        }
+
+        .copyright {
+            font-size: 0.875rem;
+            color: #828282;
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                padding: 3rem 0;
+            }
+
+            .title {
+                font-size: 2.5rem;
+            }
+
+            .description {
+                font-size: 1.125rem;
+            }
+
+            .projects {
+                padding: 3rem 0;
+            }
+
+            .section-title {
+                font-size: 2rem;
+                margin-bottom: 2rem;
+            }
+
+            .avatar {
+                transform: translate(0, 50px) scale(2);
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="nav">
+                <a href="#" class="nav-title">Koi</a>
+                <nav class="nav-links">
+                    <a href="#" class="nav-link">关于</a>
+                    <a href="#projects" class="nav-link">项目</a>
+                    <a href="#contact" class="nav-link">个人主页</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero container">
+            <div class="subtitle">UI/UX设计师</div>
+            <div class="hero-title-container">
+                <h1 class="title">大家好，这里是K姐</h1>
+                <img src="images/头像.jpg" alt="Koi头像" class="avatar" onerror="this.style.display='none'; console.error('头像加载失败: 路径不正确或图片不存在')">
+            </div>
+            <p class="description">
+                这里是关于我的专业技能和职业经历的简要介绍。您可以在下方了解更多关于我的作品集信息。
+            </p>
+            <div class="buttons">
+                <a href="#projects" class="btn-primary">项目</a>
+                <a href="#" class="btn-secondary">LinkedIn</a>
+            </div>
+        </section>
+
+        <section class="projects container" id="projects">
+            <h2 class="section-title">项目</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="images/project1-image.png" alt="图像生成">
+                    </div>
+                    <div class="project-info">
+                        <h3 class="project-title">图像生成</h3>
+                        <p class="project-description">
+                            图像生成新功能实测
+                        </p>
+                        <a href="https://ai-bot.cn/ai-tutorials-the-measured-dou-bao-super-energy-creativity-1-0/" class="project-link" target="_blank" rel="noopener noreferrer">查看项目</a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="images/project2-image.png" alt="视频制作">
+                    </div>
+                    <div class="project-info">
+                        <h3 class="project-title">视频制作</h3>
+                        <p class="project-description">
+                            手把手教你创作AI故事短片、电影或短剧
+                        </p>
+                        <a href="https://ai-bot.cn/ai-tutorials-kling-2-0-making-short-story-films/" class="project-link" target="_blank" rel="noopener noreferrer">查看项目</a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="images/project3-image.png" alt="项目开发">
+                    </div>
+                    <div class="project-info">
+                        <h3 class="project-title">项目开发</h3>
+                        <p class="project-description">
+                            0基础小白上架了我的第一款微信小程序
+                        </p>
+                        <a href="https://ai-bot.cn/ai-tutorials-lingma-aliyun-ai-coding/" class="project-link" target="_blank" rel="noopener noreferrer">查看项目</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="social-icons">
+                    <a href="https://ai-bot.cn/" target="_blank" rel="noopener noreferrer">
+                        <svg class="social-icon" viewBox="0 0 24 24">
+                            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.74 0 8.333.014 7.053.06 2.051.292.292 2.052.06 7.053.014 8.333 0 8.74 0 12c0 3.26.014 3.668.06 4.948.232 4.97.294 5.962.324 6.948H6v-5.67c0-.221.019-.435.059-.641.072-.384.274-.717.559-.952.284-.234.616-.435.951-.559.207-.04.42-.06.641-.06h4.334v4.334H7.64c-.221 0-.435.019-.641.059-.384.072-.717.274-.952.559-.234.284-.435.616-.559.951-.04.207-.06.42-.06.641v4.334h10.668v-4.334c0-.221-.019-.435-.059-.641-.072-.384-.274-.717-.559-.952-.284-.234-.616-.435-.951-.559-.207-.04-.42-.06-.641-.06H16.36V7.64h4.948c.222 0 .436.02.642.06.384.072.717.274.952.559.234.284.435.616.559.951.04.207.06.42.06.641V12h-5.67V6.334h5.67V12z"/>
+                        </svg></a>
+                    <a href="#"><svg class="social-icon" viewBox="0 0 24 24">
+                        <path d="M4.98 3.5c0 1.381-1.11 2.5-2.48 2.5s-2.48-1.119-2.48-2.5C.02 2.12 1.13 1 2.5 1s2.48 1.12 2.48 2.5zM5 8H0v12h5V8z"/>
+                        <path d="M21.98 3.5c0 1.381-1.11 2.5-2.48 2.5s-2.48-1.119-2.48-2.5C17.02 2.12 18.13 1 19.5 1s2.48 1.12 2.48 2.5zM12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm0 22C5.935 22 1 17.064 1 11S5.935 1 12 1s11 4.936 11 11-4.935 11-11 11z"/>
+                    </svg></a>
+                    <a href="#"><svg class="social-icon" viewBox="0 0 24 24">
+                        <path d="M22 4H2C.9 4 0 4.9 0 6v12c0 1.1.9 2 2 2h20c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 14H2V6h20v12z"/>
+                        <path d="M22 4H2C.9 4 0 4.9 0 6v12c0 1.1.9 2 2 2h20c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm-8.93 9.8L10.5 12.25 5.05 18h2.35l4.5-5.75 4.5 5.75h2.35l-5.58-7.2L22 6h-2.35l-4.5 5.75-4.5-5.75H8.3l5.75 7.2z"/>
+                    </svg></a>
+                </div>
+                <div class="copyright">Koi 2025</div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
